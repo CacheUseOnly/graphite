@@ -1,14 +1,14 @@
 {
     "id": "io.github.cacheuseonly.graphite",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "47",
+    "runtime-version": "48",
     "sdk": "org.gnome.Sdk",
     "command": "graphite",
     "finish-args": [
         "--socket=fallback-x11",
+        "--share=ipc",
         "--socket=wayland",
         "--device=dri",
-        "--filesystem=xdg-cache",
         "--filesystem=/var/lib/apt:ro",
         "--filesystem=/var/cache/apt:ro",
         "--filesystem=/var/lib/dpkg:ro"
@@ -226,8 +226,9 @@
             "buildsystem": "meson",
             "sources": [
                 {
-                    "type": "dir",
-                    "path": "."
+                    "type": "git",
+                    "url": "https://github.com/CacheUseOnly/graphite.git",
+                    "tag": "v1.0"
                 }
             ]
         }
