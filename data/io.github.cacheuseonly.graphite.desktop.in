@@ -4,5 +4,5 @@ Exec=graphite
 Icon=io.github.cacheuseonly.graphite
 Terminal=false
 Type=Application
-Categories=GTK;
+Categories=System;Graphics;GTK;GNOME
 StartupNotify=true

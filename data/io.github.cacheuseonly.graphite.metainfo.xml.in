@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-    <id>io.github.cacheuseonly.graphite.desktop</id>
+    <id>io.github.cacheuseonly.graphite</id>
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>GPL-3.0-or-later</project_license>
     <name>Graphite</name>
     <summary>Visualize APT package dependencies</summary>
+    <launchable type="desktop-id">io.github.cacheuseonly.graphite.desktop</launchable>
     <description>
         <p>
             Graphite is a GTK4/Libadwaita application for visualizing APT package dependencies.
@@ -12,7 +13,23 @@
             exploration of the package dependency graph.
         </p>
     </description>
-    
+    <provides>
+        <id>io.github.cacheuseonly.graphite.desktop</id>
+    </provides>
+    <content_rating type="oars-1.0" />
+    <screenshots>
+        <screenshot type="default">
+            <caption>Overview</caption>
+            <image type="source" width="1102" height="876">https://github.com/CacheUseOnly/graphite/blob/master/data/screenshots/overview.png</image>
+        </screenshot>
+    </screenshots>
+    <releases>
+        <release version="1.0" date="2025-08-18" />
+    </releases>
+
+    <developer id="io.github.cacheuseonly">
+        <name>CacheUseOnly</name>
+    </developer>
     <url type="homepage">https://github.com/CacheUseOnly/graphite</url>
     <url type="bugtracker">https://github.com/CacheUseOnly/graphite/issues</url>
 </component>
