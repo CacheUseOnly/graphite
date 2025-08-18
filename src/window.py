@@ -35,7 +35,7 @@ from .loading_page import LoadingPage
 from .canvas import Canvas
 from .search_row import SearchRow
 
-CACHE_PATH = os.path.join(os.getenv('XDG_CACHE_HOME'), 'graphite')
+CACHE_PATH = os.path.join(os.getenv('XDG_CACHE_HOME', os.path.expanduser('~/.cache')), 'graphite')
 NODE_GRAPH_CACHE = os.path.join(CACHE_PATH, 'node_graph.pkl')
 POS_DICT_CACHE = os.path.join(CACHE_PATH, 'pos_dict.pkl')
 
