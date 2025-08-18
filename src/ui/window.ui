@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0" />
+  <requires lib="Adw" version="1.0" />
+  <template class="GraphiteWindow" parent="AdwApplicationWindow">
+    <property name="title">Graphite</property>
+    <property name="default-width">980</property>
+    <property name="default-height">754</property>
+    <child>
+      <object class="AdwToolbarView">
+        <property name="top-bar-style">raised</property>
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <child type="start">
+              <object class="GtkToggleButton" id="search-button">
+                <property name="tooltip-text" translatable="yes">Search</property>
+                <property name="icon-name">system-search-symbolic</property>
+                <signal name="toggled" handler="_on_search_clicked" />
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkBox">
+                <property name="orientation">horizontal</property>
+                <property name="spacing">6</property>
+
+                <child>
+                  <object class="GtkButton" id="collapse-button">
+                    <property name="tooltip-text" translatable="yes">Collapse Sidebar</property>
+                    <property name="icon-name">sidebar-show-right-symbolic</property>
+                    <signal name="clicked" handler="_on_collapse_clicked" />
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkMenuButton">
+                    <property name="icon-name">open-menu-symbolic</property>
+                    <property name="primary">True</property>
+                    <property name="menu-model">primary_menu</property>
+                    <property name="tooltip-text" translatable="yes">Menu</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+
+        <child type="top">
+          <object class="GtkSearchBar" id="search_bar">
+            <property name="search-mode-enabled">false</property>
+            <child>
+              <object class="GtkSearchEntry" id="search_entry">
+                <property name="placeholder-text" translatable="yes">Search packages...</property>
+                <property name="width-request">400</property>
+                <signal name="search-changed" handler="_on_search_changed" />
+              </object>
+            </child>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkStack" id="stack">
+            <property name="transition-type">crossfade</property>
+
+            <!-- Main content -->
+            <child>
+              <object class="AdwOverlaySplitView" id="overlay_view">
+                <property name="sidebar-position">end</property>
+
+                <property name="sidebar">
+                  <object class="Panel" id="panel" />
+                </property>
+
+                <property name="content">
+                  <object class="GtkStack" id="content_stack">
+                    <property name="transition-type">crossfade</property>
+                    <child>
+                      <object class="LoadingPage" id="loading_page" />
+                    </child>
+                    <child>
+                      <object class="Canvas" id="canvas" />
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </child>
+
+            <!-- Search page -->
+            <child>
+              <object class="GtkScrolledWindow" id="search_page">
+                <child>
+                  <object class="AdwClamp">
+                    <property name="margin-top">12</property>
+                    <property name="margin-bottom">12</property>
+                    <child>
+                      <object class="GtkListBox" id="search_results_list">
+                        <property name="valign">start</property>
+                        <property name="hexpand">true</property>
+                        <property name="selection-mode">single</property>
+                        <signal name="row-activated" handler="_on_search_result_activated" />
+                        <style>
+                          <class name="boxed-list" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+
+      </object>
+    </child>
+  </template>
+
+  <menu id="primary_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Regenerate</attribute>
+        <attribute name="shortcut">Ctrl+r</attribute>
+        <attribute name="action">app.regenerate</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Preferences</attribute>
+        <attribute name="shortcut">Ctrl+comma</attribute>
+        <attribute name="action">app.preferences</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_About Graphite</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>

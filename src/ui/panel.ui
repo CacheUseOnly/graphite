@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0" />
+  <requires lib="Adw" version="1.0" />
+  <template class="Panel" parent="AdwBin">
+    <property name="width-request">280</property>
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="hscrollbar-policy">never</property>
+        <property name="vscrollbar-policy">automatic</property>
+        <property name="propagate-natural-height">true</property>
+
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="spacing">12</property>
+            <property name="margin-start">12</property>
+            <property name="margin-end">12</property>
+            <property name="margin-top">12</property>
+            <property name="margin-bottom">12</property>
+
+            <!-- Package Name -->
+            <child>
+              <object class="AdwPreferencesGroup">
+                <child>
+                  <object class="GtkLabel" id="header_label">
+                    <property name="xalign">0</property>
+                    <property name="wrap">true</property>
+                    <property name="wrap-mode">PANGO_WRAP_WORD_CHAR</property>
+                    <property name="selectable">true</property>
+                    <style>
+                      <class name="title-2" />
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <!-- Package Info -->
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <property name="margin-bottom">12</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Version</property>
+                        <property name="halign">start</property>
+                        <property name="xalign">0</property>
+                        <style>
+                          <class name="dimmed" />
+                          <class name="caption" />
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="version_row">
+                        <property name="selectable">true</property>
+                        <property name="label">-</property>
+                        <property name="halign">start</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <property name="margin-bottom">12</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Architecture</property>
+                        <property name="halign">start</property>
+                        <property name="xalign">0</property>
+                        <style>
+                          <class name="dimmed" />
+                          <class name="caption" />
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="arch_row">
+                        <property name="selectable">true</property>
+                        <property name="label">-</property>
+                        <property name="halign">start</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <property name="margin-bottom">12</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Installation Type</property>
+                        <property name="halign">start</property>
+                        <property name="xalign">0</property>
+                        <style>
+                          <class name="dimmed" />
+                          <class name="caption" />
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="manual_row">
+                        <property name="label">-</property>
+                        <property name="halign">start</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <!-- Add Dependencies Section -->
+                <child>
+                  <object class="AdwPreferencesGroup" id="deps_group">
+                    <property name="title" translatable="yes">Dependencies</property>
+                    <property name="description">-</property>
+                    <property name="margin-bottom">24</property>
+                    <child>
+                      <object class="GtkScrolledWindow" id="deps_scroll">
+                        <property name="height-request">174</property>
+                        <child>
+                          <object class="GtkListBox" id="deps_list">
+                            <property name="selection-mode">none</property>
+                            <style>
+                              <class name="boxed-list" />
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <!-- Add Reverse Dependencies Section -->
+                <child>
+                  <object class="AdwPreferencesGroup" id="reverse_deps_group">
+                    <property name="title" translatable="yes">Reverse Dependencies</property>
+                    <property name="description">-</property>
+                    <child>
+                      <object class="GtkScrolledWindow" id="reverse_deps_scroll">
+                        <property name="height-request">174</property>
+                        <child>
+                          <object class="GtkListBox" id="reverse_deps_list">
+                            <property name="selection-mode">none</property>
+                            <style>
+                              <class name="boxed-list" />
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+
+</interface>

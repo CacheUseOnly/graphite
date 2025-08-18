@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0" />
+  <requires lib="Adw" version="1.0" />
+  <template class="Preferences" parent="AdwPreferencesDialog">
+    <property name="content-width">520</property>
+    <child>
+      <object class="AdwPreferencesPage">
+        <property name="title">General</property>
+        <property name="icon-name">applications-system-symbolic</property>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">General</property>
+            <child>
+              <object class="AdwSpinRow" id="iterations">
+                <property name="title" translatable="yes">Iteration</property>
+                <property name="subtitle" translatable="yes">Maximum number of iterations to converge the graph</property>
+                <property name="adjustment">
+                  <object class="GtkAdjustment">
+                    <property name="lower">10</property>
+                    <property name="upper">3000</property>
+                    <property name="step-increment">10</property>
+                    <property name="page-increment">100</property>
+                    <property name="value">800</property>
+                  </object>
+                </property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSwitchRow" id="strong_gravity_mode">
+                <property name="title" translatable="yes">Strong Gravity Mode</property>
+                <property name="subtitle" translatable="yes">Use strong gravity mode for a circular shape atlas</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSpinRow" id="gravity">
+                <property name="title" translatable="yes">Gravity</property>
+                <property name="subtitle" translatable="yes">Gravity parameter for the force-directed layout</property>
+                <property name="digits">2</property>
+                <property name="adjustment">
+                  <object class="GtkAdjustment">
+                    <property name="lower">0.01</property>
+                    <property name="upper">10</property>
+                    <property name="step-increment">0.01</property>
+                    <property name="page-increment">0.1</property>
+                    <property name="value">0.1</property>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

@@ -1,0 +1,19 @@
+Source: graphite
+Maintainer: Yuxuan Luo <luoyuxuan.carl@gmail.com>
+Build-Depends: debhelper-compat (= 13),
+               meson (>= 0.62.0),
+Standards-Version: 4.6.0
+
+Package: graphite
+Architecture: amd64
+Section: utils
+Priority: optional
+Depends: ${misc:Depends},
+         python3-apt,
+         python3-gi,
+         python3-networkx,
+         libadwaita-1-0 (>= 1.5)
+Description: APT package dependency graph visualizer
+ A Libadwaita application for visualizing APT package dependencies.
+ Shows dependency relationships between installed packages and allows
+ interactive exploration of the package dependency graph.

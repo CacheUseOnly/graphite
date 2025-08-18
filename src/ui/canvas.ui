@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0" />
+  <requires lib="Adw" version="1.0" />
+  <template class="Canvas" parent="AdwBin">
+    <child>
+      <object class="GtkOverlay">
+        <child>
+          <object class="GtkDrawingArea" id="drawing_area">
+            <property name="hexpand">true</property>
+            <property name="vexpand">true</property>
+            <child>
+              <object class="GtkPopover" id="label_popover">
+                <property name="position">top</property>
+                <property name="autohide">false</property>
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <property name="margin-start">6</property>
+                    <property name="margin-end">6</property>
+                    <property name="margin-top">6</property>
+                    <property name="margin-bottom">6</property>
+
+                    <child>
+                      <object class="GtkLabel" id="pkg_name_label">
+                        <property name="label">-</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        
+        <!-- Legend overlay at bottom left -->
+        <child type="overlay">
+          <object class="GtkBox" id="legend_overlay">
+            <property name="orientation">vertical</property>
+            <property name="halign">start</property>
+            <property name="valign">end</property>
+            <property name="margin-start">12</property>
+            <property name="margin-bottom">12</property>
+            <property name="width-request">200</property>
+            <property name="height-request">150</property>
+            <property name="spacing">6</property>
+            <style>
+              <class name="card"/>
+              <class name="legend"/>
+            </style>
+            
+            <!-- Legend title -->
+            <child>
+              <object class="GtkLabel" id="legend_title">
+                <property name="label" translatable="yes">Legend</property>
+                <property name="halign">center</property>
+                <property name="margin-top">8</property>
+                <property name="margin-bottom">4</property>
+                <style>
+                  <class name="heading"/>
+                </style>
+              </object>
+            </child>
+            
+            <!-- Legend content area -->
+            <child>
+              <object class="GtkBox" id="legend_content_box">
+                <property name="orientation">horizontal</property>
+                <property name="hexpand">true</property>
+                <property name="vexpand">true</property>
+                <property name="spacing">6</property>
+                
+                <!-- Left side: Drawing area for visual elements -->
+                <child>
+                  <object class="GtkDrawingArea" id="legend_drawing_area">
+                    <property name="width-request">88</property>
+                    <property name="vexpand">true</property>
+                  </object>
+                </child>
+                
+                <!-- Right side: Labels -->
+                <child>
+                  <object class="GtkBox" id="legend_labels_box">
+                    <property name="orientation">vertical</property>
+                    <property name="hexpand">true</property>
+                    <property name="vexpand">true</property>
+                    <property name="spacing">10</property>
+                    
+                    <child>
+                      <object class="GtkLabel" id="manual_label">
+                        <property name="label" translatable="yes">Manual Install</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <style>
+                          <class name="caption"/>
+                        </style>
+                      </object>
+                    </child>
+                    
+                    <child>
+                      <object class="GtkLabel" id="auto_label">
+                        <property name="label" translatable="yes">Auto Install</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <style>
+                          <class name="caption"/>
+                        </style>
+                      </object>
+                    </child>
+                    
+                    <child>
+                      <object class="GtkLabel" id="inward_label">
+                        <property name="label" translatable="yes">Depended By</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <style>
+                          <class name="caption"/>
+                        </style>
+                      </object>
+                    </child>
+                    
+                    <child>
+                      <object class="GtkLabel" id="outward_label">
+                        <property name="label" translatable="yes">Depend On</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <style>
+                          <class name="caption"/>
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

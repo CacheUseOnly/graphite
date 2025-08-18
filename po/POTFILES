@@ -1,0 +1,10 @@
+data/io.github.cacheuseonly.graphite.desktop.in
+data/io.github.cacheuseonly.graphite.metainfo.xml.in
+data/io.github.cacheuseonly.graphite.gschema.xml
+src/main.py
+src/window.py
+src/ui/canvas.ui
+src/ui/help-overlay.ui
+src/ui/loading-page.ui
+src/ui/preferences.ui
+src/ui/window.ui

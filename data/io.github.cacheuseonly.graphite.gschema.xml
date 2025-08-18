@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="graphite">
+	<schema id="io.github.cacheuseonly.graphite" path="/io/github/cacheuseonly/graphite/">
+		<child name="common" schema="io.github.cacheuseonly.graphite.common" />
+		<child name="appearance" schema="io.github.cacheuseonly.graphite.appearance" />
+	</schema>
+
+	<schema id="io.github.cacheuseonly.graphite.common" path="/io/github/cacheuseonly/graphite/common/">
+		<key name="iterations" type="i">
+			<range min="10" max="3000" />
+			<default>800</default>
+			<summary>Number of iterations</summary>
+			<description>Maximum number of iterations allowed for the graph to converge</description>
+		</key>
+		<key name="strong-gravity-mode" type="b">
+			<default>true</default>
+			<summary>Use strong gravity mode</summary>
+			<description>Use strong gravity mode for a circular shaped atlas</description>
+		</key>
+		<key name="gravity" type="d">
+			<range min="0.01" max="10" />
+			<default>0.1</default>
+			<summary>Gravity</summary>
+			<description>Gravity parameter for the force-directed layout</description>
+		</key>
+	</schema>
+
+	<schema id="io.github.cacheuseonly.graphite.appearance" path="/io/github/cacheuseonly/graphite/appearance/">
+		<child name="dark" schema="io.github.cacheuseonly.graphite.appearance.dark" />
+		<child name="light" schema="io.github.cacheuseonly.graphite.appearance.light" />
+	</schema>
+
+	<schema id="io.github.cacheuseonly.graphite.appearance.dark" path="/io/github/cacheuseonly/graphite/appearance/dark/">
+		<key name="outward-edge-color" type="(ddd)">
+			<default>(178, 106, 66)</default>
+			<summary>Outward edge color</summary>
+			<description>Color of the outward edges</description>
+		</key>
+		<key name="inward-edge-color" type="(ddd)">
+			<default>(67, 117, 176)</default>
+			<summary>Inward edge color</summary>
+			<description>Color of the inward edges</description>
+		</key>
+		<key name="default-edge-color" type="(ddd)">
+			<default>(49, 49, 49)</default>
+			<summary>Default edge color</summary>
+			<description>Color of the non-highlighted edges</description>
+		</key>
+
+		<key name="selected-node-color" type="(ddd)">
+			<default>(255, 137, 32)</default>
+			<summary>Selected node color</summary>
+			<description>Color of the selected node</description>
+		</key>
+		<key name="selected-node-color-hovered" type="(ddd)">
+			<default>(255, 165, 85)</default>
+			<summary>Selected node color</summary>
+			<description>Color of the selected node</description>
+		</key>
+		<key name="manual-node-color" type="(ddd)">
+			<default>(71, 156, 255)</default>
+			<summary>Auto installed node color</summary>
+			<description>Color of the auto installed nodes</description>
+		</key>
+		<key name="manual-node-color-hovered" type="(ddd)">
+			<default>(119, 182, 255)</default>
+			<summary>Auto installed node color</summary>
+			<description>Color of the auto installed nodes</description>
+		</key>
+		<key name="manual-node-color-dimmed" type="(ddd)">
+			<default>(50, 74, 102)</default>
+			<summary>Auto installed node color</summary>
+			<description>Color of the auto installed nodes</description>
+		</key>
+		<key name="manual-node-color-dimmed-hovered" type="(ddd)">
+			<default>(74, 111, 152)</default>
+			<summary>Auto installed node color</summary>
+			<description>Color of the auto installed nodes</description>
+		</key>
+		<key name="auto-node-color" type="(ddd)">
+			<default>(220, 220, 220)</default>
+			<summary>Manually installed node color</summary>
+			<description>Color of the manually installed nodes</description>
+		</key>
+		<key name="auto-node-color-hovered" type="(ddd)">
+			<default>(233, 241, 249)</default>
+			<summary>Manually installed node color</summary>
+			<description>Color of the manually installed nodes</description>
+		</key>
+		<key name="auto-node-color-dimmed" type="(ddd)">
+			<default>(73, 73, 73)</default>
+			<summary>Manually installed node color</summary>
+			<description>Color of the manually installed nodes</description>
+		</key>
+		<key name="auto-node-color-dimmed-hovered" type="(ddd)">
+			<default>(111, 117, 123)</default>
+			<summary>Manually installed node color</summary>
+			<description>Color of the manually installed nodes</description>
+		</key>
+	</schema>
+
+	<schema id="io.github.cacheuseonly.graphite.appearance.light" path="/io/github/cacheuseonly/graphite/appearance/light/">
+		<key name="outward-edge-color" type="(ddd)">
+			<default>(240, 174, 139)</default>
+			<summary>Outward edge color</summary>
+			<description>Color of the outward edges</description>
+		</key>
+		<key name="inward-edge-color" type="(ddd)">
+			<default>(133, 176, 226)</default>
+			<summary>Inward edge color</summary>
+			<description>Color of the inward edges</description>
+		</key>
+		<key name="default-edge-color" type="(ddd)">
+			<default>(229, 229, 229)</default>
+			<summary>Default edge color</summary>
+			<description>Color of the non-highlighted edges</description>
+		</key>
+
+		<key name="selected-node-color" type="(ddd)">
+			<default>(255, 163, 72)</default>
+			<summary>Selected node color</summary>
+			<description>Color of the selected node</description>
+		</key>
+		<key name="selected-node-color-hovered" type="(ddd)">
+			<default>(253, 139, 60)</default>
+			<summary>Selected node color</summary>
+			<description>Color of the selected node</description>
+		</key>
+		<key name="manual-node-color" type="(ddd)">
+			<default>(95, 169, 255)</default>
+			<summary>Auto installed node color</summary>
+			<description>Color of the auto installed nodes</description>
+		</key>
+		<key name="manual-node-color-hovered" type="(ddd)">
+			<default>(34, 136, 255)</default>
+			<summary>Auto installed node color</summary>
+			<description>Color of the auto installed nodes</description>
+		</key>
+		<key name="manual-node-color-dimmed" type="(ddd)">
+			<default>(167, 206, 252)</default>
+			<summary>Auto installed node color</summary>
+			<description>Color of the auto installed nodes</description>
+		</key>
+		<key name="manual-node-color-dimmed-hovered" type="(ddd)">
+			<default>(128, 174, 227)</default>
+			<summary>Auto installed node color</summary>
+			<description>Color of the auto installed nodes</description>
+		</key>
+		<key name="auto-node-color" type="(ddd)">
+			<default>(180, 180, 180)</default>
+			<summary>Manually installed node color</summary>
+			<description>Color of the manually installed nodes</description>
+		</key>
+		<key name="auto-node-color-hovered" type="(ddd)">
+			<default>(118, 124, 130)</default>
+			<summary>Manually installed node color</summary>
+			<description>Color of the manually installed nodes</description>
+		</key>
+		<key name="auto-node-color-dimmed" type="(ddd)">
+			<default>(202, 202, 202)</default>
+			<summary>Manually installed node color</summary>
+			<description>Color of the manually installed nodes</description>
+		</key>
+		<key name="auto-node-color-dimmed-hovered" type="(ddd)">
+			<default>(169, 175, 183)</default>
+			<summary>Manually installed node color</summary>
+			<description>Color of the manually installed nodes</description>
+		</key>
+	</schema>
+</schemalist>
