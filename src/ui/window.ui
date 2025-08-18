@@ -65,19 +65,35 @@
             <child>
               <object class="AdwOverlaySplitView" id="overlay_view">
                 <property name="sidebar-position">end</property>
+                <property name="min-sidebar-width">280</property>
+                <property name="max-sidebar-width">400</property>
+                <property name="sidebar-width-fraction">0.3</property>
+                <property name="show-sidebar">true</property>
 
                 <property name="sidebar">
-                  <object class="Panel" id="panel" />
+                  <object class="Panel" id="panel">
+                    <property name="width-request">280</property>
+                    <property name="hexpand">false</property>
+                    <property name="vexpand">true</property>
+                  </object>
                 </property>
 
                 <property name="content">
                   <object class="GtkStack" id="content_stack">
                     <property name="transition-type">crossfade</property>
+                    <property name="hexpand">true</property>
+                    <property name="vexpand">true</property>
                     <child>
-                      <object class="LoadingPage" id="loading_page" />
+                      <object class="LoadingPage" id="loading_page">
+                        <property name="hexpand">true</property>
+                        <property name="vexpand">true</property>
+                      </object>
                     </child>
                     <child>
-                      <object class="Canvas" id="canvas" />
+                      <object class="Canvas" id="canvas">
+                        <property name="hexpand">true</property>
+                        <property name="vexpand">true</property>
+                      </object>
                     </child>
                   </object>
                 </property>
