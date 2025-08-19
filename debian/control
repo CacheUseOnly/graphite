@@ -2,6 +2,8 @@ Source: graphite
 Maintainer: Yuxuan Luo <luoyuxuan.carl@gmail.com>
 Build-Depends: debhelper-compat (= 13),
                meson (>= 0.62.0),
+               python3-dev,
+               cython3,
 Standards-Version: 4.6.0
 
 Package: graphite

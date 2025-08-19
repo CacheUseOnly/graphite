@@ -18,6 +18,8 @@ fa2util = custom_target(
     'build_ext',
     '--build-lib',
     '@OUTDIR@',
+    '--build-temp',
+    '@OUTDIR@',
   ],
   build_by_default: true,
   install: true,
