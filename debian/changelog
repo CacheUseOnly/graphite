@@ -1,5 +1,5 @@
-graphite (1.0) UNRELEASED; urgency=medium
+graphite (1.0) noble; urgency=medium
 
   * Initial release.
 
- -- Yuxuan Luo <luoyuxuan.carl@gmail.com>  Fri, 15 Aug 2025 14:35:24 -0400
+ -- Yuxuan Luo <luoyuxuan.carl@gmail.com>  Tue, 19 Aug 2025 16:43:18 -0400

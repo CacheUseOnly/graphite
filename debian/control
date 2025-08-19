@@ -1,15 +1,17 @@
 Source: graphite
+Section: utils
+Priority: optional
 Maintainer: Yuxuan Luo <luoyuxuan.carl@gmail.com>
 Build-Depends: debhelper-compat (= 13),
                meson (>= 0.62.0),
-               python3-dev,
+	       libglib2.0-dev,
+	       libgtk-4-dev,
+	       desktop-file-utils,
                cython3,
 Standards-Version: 4.6.0
 
 Package: graphite
-Architecture: amd64
-Section: utils
-Priority: optional
+Architecture: all
 Depends: ${misc:Depends},
          python3-apt,
          python3-gi,
