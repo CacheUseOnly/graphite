@@ -20,6 +20,7 @@
 
 import random
 import time
+from gi.repository import GLib
 
 from . import fa2util
 from ..utils import normalized_size
@@ -165,8 +166,7 @@ class ForceAtlas2:
         # ================================================================
 
         for i in range(iterations):
-            progress_bar.set_fraction(i / iterations)
-            progress_bar.set_text(f"Iteration {i + 1}/{iterations}")
+            GLib.idle_add(self._update_progress, progress_bar, i, iterations)
 
             for n in nodes:
                 n.old_dx = n.dx
@@ -216,3 +216,9 @@ class ForceAtlas2:
             poslist = [[pos[i][0], pos[i][1]] for i in G.nodes()]
             l = self.forceatlas2(G, pos=poslist, iterations=iterations, progress_bar=progress_bar)
         return dict(zip(G.nodes(), l))
+
+    def _update_progress(self, progress_bar, current, total):
+        """Update progress bar from main thread"""
+        progress_bar.set_fraction(current / total)
+        progress_bar.set_text(f"Iteration {current + 1}/{total}")
+        return False
