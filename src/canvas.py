@@ -303,7 +303,7 @@ class Canvas(Adw.Bin):
 
     def on_scroll(self, event: Gtk.EventControllerScroll, _dx, dy):
         zoom_factor = SCALE_STEP
-        zoom_factor = -zoom_factor if dy > 0 else zoom_factor
+        zoom_factor = zoom_factor if dy > 0 else -zoom_factor
 
         old_scale = self.scale
         new_scale = self.scale - zoom_factor
