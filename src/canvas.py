@@ -44,6 +44,7 @@ class Canvas(Adw.Bin):
 
     def __init__(self):
         super().__init__()
+        self.motion_enabled = False
 
         self.drawing_area.set_draw_func(self.draw_func)
         self.legend_drawing_area.set_draw_func(self.draw_legend)
@@ -123,10 +124,14 @@ class Canvas(Adw.Bin):
         _draw_legend_edge(cr, margin + 5, y_pos, margin + 35, y_pos,
                               self.colors['outward-edge-color'], arrow_right=True)
 
+    def _on_regenerate_requested(self, _):
+        self.motion_enabled = False
+
     def set_state(self, state: GraphState):
         self.state = state
         self.state.connect('node-selected', self._on_node_selected)
         self.state.connect('node-deselected', self._on_node_deselected)
+        self.state.connect('regenerate-requested', self._on_regenerate_requested)
 
     def set_data(self, node_graph, pos_dict):
         self.normal_edges.clear()
@@ -162,10 +167,10 @@ class Canvas(Adw.Bin):
         gesture.connect('drag-end', self.on_drag_end)
         self.drawing_area.add_controller(gesture)
 
-        # Motion controller
-        motion = Gtk.EventControllerMotion.new()
-        motion.connect("motion", self.on_cursor_move)
-        self.drawing_area.add_controller(motion)
+        # Motion controller - store reference for later disconnection
+        self.motion_controller = Gtk.EventControllerMotion.new()
+        self.motion_controller.connect("motion", self.on_cursor_move)
+        self.drawing_area.add_controller(self.motion_controller)
 
         # Scroll controller
         scroll = Gtk.EventControllerScroll.new(Gtk.EventControllerScrollFlags.VERTICAL)
@@ -255,6 +260,7 @@ class Canvas(Adw.Bin):
         if self.x_translate is None or self.y_translate is None:
             self.x_translate = width  / 2
             self.y_translate = height / 2
+            self.motion_enabled = True
 
         cr.translate(self.x_translate, self.y_translate)
 
@@ -326,6 +332,9 @@ class Canvas(Adw.Bin):
 
     def _get_node_at_position(self, x: float, y: float) -> str | None:
         """Get the node at the given screen coordinates, or None if no node is there."""
+        if not self.motion_enabled:
+            return None
+
         x_graph = (x - self.x_translate) / self.scale
         y_graph = (y - self.y_translate) / self.scale
 
