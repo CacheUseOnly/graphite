@@ -7,9 +7,9 @@ host_machine_system = host_machine.system()
 arch_suffix = host_machine.cpu_family() == 'x86_64' ? 'x86_64-linux-gnu' : host_machine.cpu_family() + '-linux-gnu'
 so_pattern = 'fa2util.cpython-@0@-@1@.so'.format(python_version, arch_suffix)
 
-fa2util = custom_target(
+custom_target(
   so_pattern,
-  input: ['setup.py', 'fa2util.py'],
+  input: ['setup.py', 'fa2util.pyx'],
   output: so_pattern,
   command: [
     python.full_path(),
