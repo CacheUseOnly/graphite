@@ -5,6 +5,7 @@ from gi.repository import Gtk, Adw, Gdk, Gio
 
 from .utils import *
 from .state_manager import GraphState
+from .apt_dependency import get_orphan_nodes
 
 SCALE_MIN = 0.1
 SCALE_MAX = 10.0
@@ -132,6 +133,7 @@ class Canvas(Adw.Bin):
         self.state.connect('node-selected', self._on_node_selected)
         self.state.connect('node-deselected', self._on_node_deselected)
         self.state.connect('regenerate-requested', self._on_regenerate_requested)
+        self.state.connect('show-orphans-requested', self._on_show_orphans_requested)
 
     def set_data(self, node_graph, pos_dict):
         self.normal_edges.clear()
@@ -379,6 +381,8 @@ class Canvas(Adw.Bin):
         clicked_node = self._get_node_at_position(x, y)
         if clicked_node is None:
             self.state.selected_node = None
+            if self.state.show_orphans:
+                self.state.show_orphans = False
         else:
             self.state.selected_node = clicked_node
         self.drawing_area.queue_draw()
@@ -402,6 +406,21 @@ class Canvas(Adw.Bin):
         self.normal_edges = set(self.node_graph.edges())
         self.inward_edges = set()
         self.outward_edges = set()
+        self.drawing_area.queue_draw()
+
+    def _on_show_orphans_requested(self, _):
+        orphan_nodes = get_orphan_nodes(self.node_graph)
+        self.normal_nodes = set(orphan_nodes)
+        self.dimmed_nodes = self.all_nodes_set - self.normal_nodes
+
+        orphan_edges = set()
+        for node in orphan_nodes:
+            orphan_edges.update(self.node_graph.in_edges(nbunch=node))
+            orphan_edges.update(self.node_graph.out_edges(nbunch=node))
+        self.normal_edges = orphan_edges
+        self.inward_edges = set()
+        self.outward_edges = set()
+
         self.drawing_area.queue_draw()
 
     def load_theme_colors(self, *_):

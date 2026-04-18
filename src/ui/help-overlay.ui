@@ -17,6 +17,12 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Show Orphans</property>
+                <property name="action-name">app.show-orphans</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Quit</property>
                 <property name="action-name">app.quit</property>
               </object>

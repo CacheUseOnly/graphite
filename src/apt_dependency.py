@@ -50,3 +50,14 @@ def build_dependency_graph() -> nx.DiGraph:
     cache.close()
 
     return graph
+
+
+def get_orphan_nodes(graph: nx.DiGraph) -> list[str]:
+    """Return nodes that belong to weakly connected components smaller than 3."""
+    orphan_nodes = []
+
+    for component in nx.weakly_connected_components(graph):
+        if len(component) < 3:
+            orphan_nodes.extend(component)
+
+    return orphan_nodes

@@ -38,6 +38,7 @@ class GraphiteApplication(Adw.Application):
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('about', self.on_about_action)
         self.create_action('preferences', self.on_preferences_action, ['<primary>comma'])
+        self.create_action('show-orphans', self.on_show_orphans_action, ['<primary>o'])
         self.create_action('regenerate', lambda *_: self.state.emit('regenerate-requested'), ['<primary>r'])
 
     def do_activate(self):
@@ -68,6 +69,10 @@ class GraphiteApplication(Adw.Application):
         """Callback for the app.preferences action."""
         preferences = Preferences()
         preferences.present()
+
+    def on_show_orphans_action(self, widget, _):
+        """Callback for the app.show-orphans action."""
+        self.state.show_orphans = True
 
     def create_action(self, name, callback, shortcuts=None):
         """Add an application action.

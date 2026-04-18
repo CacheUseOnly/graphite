@@ -13,12 +13,14 @@ class GraphState(GObject.Object):
         'regenerate-requested': (GObject.SignalFlags.RUN_FIRST, None, ()),
         'regenerate-progress': (GObject.SignalFlags.RUN_FIRST, None, ()),
         'regenerate-complete': (GObject.SignalFlags.RUN_FIRST, None, ()),
+        'show-orphans-requested': (GObject.SignalFlags.RUN_FIRST, None, ()),
     }
 
     def __init__(self):
         super().__init__()
         self._hovered_node = None
         self._selected_node = None
+        self._show_orphans = False
 
     @property
     def hovered_node(self):
@@ -45,3 +47,17 @@ class GraphState(GObject.Object):
                 self.emit('node-selected', node)
             else:
                 self.emit('node-deselected')
+
+    @property
+    def show_orphans(self):
+        return self._show_orphans
+
+    @show_orphans.setter
+    def show_orphans(self, value: bool):
+        if value != self._show_orphans:
+            self._show_orphans = value
+
+        if value:
+            self.emit('show-orphans-requested')
+        else:
+            self.emit('node-deselected')

@@ -137,6 +137,11 @@
         <attribute name="action">app.regenerate</attribute>
       </item>
       <item>
+        <attribute name="label" translatable="yes">_Show Orphans</attribute>
+        <attribute name="shortcut">Ctrl+o</attribute>
+        <attribute name="action">app.show-orphans</attribute>
+      </item>
+      <item>
         <attribute name="label" translatable="yes">_Preferences</attribute>
         <attribute name="shortcut">Ctrl+comma</attribute>
         <attribute name="action">app.preferences</attribute>
