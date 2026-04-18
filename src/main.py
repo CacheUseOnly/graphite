@@ -59,7 +59,7 @@ class GraphiteApplication(Adw.Application):
         about = Adw.AboutDialog(application_name='Graphite',
                                 application_icon='io.github.cacheuseonly.graphite',
                                 developer_name='Yuxuan Luo',
-                                version='1.0',
+                                version='1.1',
                                 developers=['Yuxuan Luo'],
                                 artists=['Anzhi Li'],
                                 copyright='© 2025 Yuxuan Luo')
