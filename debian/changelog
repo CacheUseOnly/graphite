@@ -1,5 +1,11 @@
+graphite (1.1.1~ubuntu24.04) noble; urgency=medium
+
+  * Fix a build dependency issue.
+
+ -- Yuxuan Luo <luoyuxuan.carl@gmail.com>  Sat, 18 Apr 2026 00:19:41 -0400
+
 graphite (1.1~ubuntu24.04) noble; urgency=medium
 
   * Bump release version for Noble.
 
- -- Yuxuan Luo <luoyuxuan.carl@gmail.com>  Fri, 17 Apr 2026 00:00:00 +0000
+ -- Yuxuan Luo <luoyuxuan.carl@gmail.com>  Sat, 18 Apr 2026 00:19:33 -0400
